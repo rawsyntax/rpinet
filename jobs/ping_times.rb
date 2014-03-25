@@ -6,7 +6,7 @@ ping_failures = Hash.new({ value: 0 })
 SCHEDULER.every '20s' do
 
   ['google.com', 'netflix.com', 'speedtest.net', 'comcast.net'].each do |site|
-    val  = `ping -c 1 -t 5 #{site}`
+    val  = `ping -c 1 #{site}`
     if val.present?
       time = val.split('\n').last.split('=').last.split('/')[1].to_i.to_s + 'ms'
 
