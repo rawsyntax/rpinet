@@ -3,7 +3,7 @@ require 'active_support/all'
 pings         = Hash.new({ value: 0 })
 ping_failures = Hash.new({ value: 0 })
 
-SCHEDULER.every '20s' do
+SCHEDULER.every '30s' do
 
   ['google.com', 'netflix.com', 'speedtest.net', 'comcast.net'].each do |site|
     val  = `ping -c 1 #{site}`
