@@ -15,6 +15,12 @@ SCHEDULER.every '30s' do
 
       ping_failures.keys.select{ |k| k < 1.day.ago.to_i }
         .map {|k| ping_failures.delete(k) }
+
+      File.open('failures.log', 'a') do |f|
+        f.write("#{Time.now.localtime.to_s} -- #{site}\n")
+        f.write("#{val}\n\n")
+      end
+
     else
       pings[site] = {label: site, value: time}
     end
